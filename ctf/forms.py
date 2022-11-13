@@ -16,8 +16,17 @@ class SubmissionForm(forms.Form):
         data = self.cleaned_data["secret"]
         flag_model = Flag.objects.filter(secret=data).first()
         if not flag_model:
-            time.sleep(1)  # Brute-force protection
+            time.sleep(3)  # Brute-force protection
             raise ValidationError("Unknown secret!")
+#        else:
+#            participant = self.cleaned_data["participant"]
+#            participant_model = Participant.objects.filter(name=participant).first()
+#            print(f" { participant } with { participant_model.points } points just scored an extra { flag_model.points } points")
+#            participant_model.points = participant_model.points + flag_model.points
+#            print(f" { participant } now has { participant_model.points } points")
+#            participant_model.save()
+#            print("Trying something else...")
+#            participant.save()
         return data
 
     def clean(self):

@@ -36,6 +36,7 @@ class Migration(migrations.Migration):
                  django.core.validators.RegexValidator('^[a-zA-Z0-9_]+$', message='Invalid secret!')])),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
+                ('points', models.PositiveIntegerField()),
             ],
             options={
                 'ordering': ['created_at'],
@@ -50,6 +51,7 @@ class Migration(migrations.Migration):
                 ('custom_name', models.CharField(blank=True, max_length=40, validators=[
                  django.core.validators.RegexValidator('^[a-zA-Z0-9_ ,]*$', message='Invalid name!')])),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
+		('points', models.PositiveIntegerField()),
                 ('updated_at', models.DateTimeField(auto_now=True)),
             ],
             options={

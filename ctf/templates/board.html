@@ -2,17 +2,19 @@
 
 {% block content %}
 <h1>Leaderboard</h1>
-<table class="table">
+<table style="margin-top: 7%" class="table">
     <thead>
-        <tr>
+        <tr class="table-dark">
             <th scope="col">Participant</th>
+            <th scope="col">Points</th>
             {% for flag in flags %}<th>{{ flag }}</th>{% endfor %}
         </tr>
     </thead>
     {% for table_entry in table_entries %}
-    {% if table_entry.name == my_participant_name %}<tr class="table-secondary">{% else %}
-    <tr>{% endif %}
+    {% if table_entry.name == my_participant_name %}<tr class="table-primary">{% else %}
+    <tr class="table-light">{% endif %}
         <td>{{ table_entry.display_name }}</td>
+	<td>{{ table_entry.participant_points }}</td>
         {% for flag in table_entry.flags %}<td{% if flag.time %} title="{{ flag.datetime }}" {% endif %}>{{ flag.time }}
             </td>{% endfor %}
     </tr>

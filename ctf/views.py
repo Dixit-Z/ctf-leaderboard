@@ -25,6 +25,11 @@ def submit(request):
                 secret=form.cleaned_data["secret"]).first()
             participant = form.cleaned_data["participant"]
             participant.custom_name = form.cleaned_data["name"]
+            #Added
+            print(f" { participant.name } with { participant.points } points just scored an extra { flag.points } points")
+            participant.points = participant.points + flag.points
+            print(f" { participant.name } now has { participant.points } points")
+            #End of added
             participant.save()
             submission = Submission(
                 flag=flag, participant=participant, session_id=request.session.session_key)
@@ -60,6 +65,7 @@ def board(request):
     for participant in participants:
         entry = {"name": participant.name}
         entry["display_name"] = f"{participant.name}: {participant.custom_name}" if participant.custom_name else participant.name
+        entry["participant_points"] = f"{participant.points}"
         entry["flags"] = []
         for flag in flags:
             submission = Submission.objects.filter(

@@ -1,10 +1,16 @@
 {% extends "base.html" %}
-
 {% block content %}
-{% if content|length == 0 %}
-<h1>Welcome to our CTF!</h1>
-<p>Nothing to see here...</p>
-{% else %}
-{% for c in content %}{{ c | safe }}{% endfor %}
-{% endif %}
+<div class="mx-auto">
+<div class="border-3 card" style="border-color:black;background-color:#ffffff9c">
+        <div class="card-body">
+	{% if content|length == 0 %}
+		<h1>Welcome to our CTF!</h1>
+		<p>Nothing to see here...</p>
+	{% else %}
+		Hello
+		{% for c in content %}{{ c | safe }}{% endfor %}
+	{% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}

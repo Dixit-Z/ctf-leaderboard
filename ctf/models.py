@@ -14,6 +14,7 @@ class Participant(models.Model):
         max_length=40, blank=True, validators=[CUSTOM_NAME_REGEX])
 
     created_at = models.DateTimeField(auto_now_add=True)
+    points = models.PositiveIntegerField()
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -30,6 +31,7 @@ class Flag(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    points = models.PositiveIntegerField()
 
     class Meta:
         ordering = ["created_at"]
