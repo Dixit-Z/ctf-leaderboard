@@ -5,7 +5,7 @@ from django.core.validators import RegexValidator
 CUSTOM_NAME_REGEX = RegexValidator(
     "^[a-zA-Z0-9_ ,]*$", message="Invalid name!")
 FLAG_SECRET_REGEX = RegexValidator(
-    "^[a-zA-Z0-9_]+$", message="Invalid secret!")
+    "^[a-zA-Z0-9_{}, ?]+$", message="Invalid secret!")
 
 
 class Participant(models.Model):
