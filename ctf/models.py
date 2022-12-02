@@ -32,6 +32,7 @@ class Flag(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     points = models.PositiveIntegerField()
+    xtra_points = models.PositiveIntegerField()
 
     class Meta:
         ordering = ["created_at"]

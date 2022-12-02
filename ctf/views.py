@@ -27,10 +27,14 @@ def submit(request):
             participant.custom_name = form.cleaned_data["name"]
             #Added
             print(f" { participant.name } with { participant.points } points just scored an extra { flag.points } points")
+            if not Submission.objects.filter(flag=flag).exists():
+                print(f"First finder ! { participant.name } scores xtra points { flag.xtra_points }")
+                participant.points = participant.points + flag.xtra_points
             participant.points = participant.points + flag.points
             print(f" { participant.name } now has { participant.points } points")
             #End of added
             participant.save()
+	    # Should we apply a coefficient on that submission to get extra credit points ?
             submission = Submission(
                 flag=flag, participant=participant, session_id=request.session.session_key)
             submission.save()
